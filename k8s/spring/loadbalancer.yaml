@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nome-do-servico
+spec:
+  selector:
+    app: nome-do-app  # Deve corresponder ao label dos pods que você quer expor
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80          # Porta pela qual o serviço será acessado externamente
+      targetPort: 8080  # Porta na qual o container está escutando
