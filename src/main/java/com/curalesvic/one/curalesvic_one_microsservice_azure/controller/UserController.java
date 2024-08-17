@@ -30,6 +30,10 @@ public class UserController {
     @Autowired
     private final UserService userService;
 
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping()
     public ResponseEntity<Iterable<UserModel>> getUsers() {
         return ResponseEntity.ok(userService.getUsers());
@@ -50,7 +54,7 @@ public class UserController {
         return ResponseEntity.ok(userService.update(id, userDTO));
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<UserModel> delete(@PathVariable Long id) {
         return ResponseEntity.ok(userService.delete(id));
     }
